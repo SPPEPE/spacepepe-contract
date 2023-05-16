@@ -194,13 +194,13 @@ contract SPEPE is IERC20 {
             //Ropstein DAI 0xaD6D458402F60fD3Bd25163575031ACDce07538D
         } else if (block.chainid == 43114) {
             dexRouter = IRouter02(0x60aE616a2155Ee3d9A68541Ba4544862310933d4);
-        } else if (block.chainid == 31337) {
+        } else if (block.chainid == 250) {
             dexRouter = IRouter02(0xF491e7B69E4244ad4002BC14e878a34207E38c29);
         } else {
             revert();
         }
 
-        lpPair = 0x054428914C1C4703933680AF26e43d1644b94563;//IFactoryV2(dexRouter.factory()).createPair(dexRouter.WETH(), address(this));
+        lpPair = IFactoryV2(dexRouter.factory()).createPair(dexRouter.WETH(), address(this));
 
         _liquidityHolders[_owner] = true;
 
